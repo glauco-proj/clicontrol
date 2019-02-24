@@ -1,0 +1,32 @@
+  <h3>Sequência de Fibonacci </h3>
+  <form [formGroup]="fibonacciForm" (ngSubmit)="onSubmitFibonacci()">
+    <div class="form-group">
+      <label for="initial">Número Inicial:</label>
+      <input type="number" class="form-control" formControlName="initial" id="initial" value="">
+      <div *ngIf="submitted && fibonacciForm.controls.initial.errors" class="error alert-danger">
+        <div *ngIf="fibonacciForm.controls.initial.errors.required" class="alert-danger">Número inicial obrigatório</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="size">Quantidade da sequência:</label>
+      <input type="number" class="form-control" formControlName="size" id="size" value="5">
+      <div *ngIf="submitted && fibonacciForm.controls.size.errors" class="error alert-danger">
+        <div *ngIf="fibonacciForm.controls.size.errors.required" class="alert-danger">Quantidade obrigatória</div>
+      </div>
+    </div>
+    <button class="btn btn-default">Obter Sequência</button>
+    <a [routerLink]="['/home']" class="btn btn-default">Voltar</a>
+    <div *ngIf="invalidFibonacci" class="error alert-danger">
+      <div>Erro ao obter sequência</div>
+    </div>
+    <br/>
+    <br/>
+    <div class="alert alert-success" *ngIf="submitted">
+      <div>Consulta feita com sucesso</div>
+      <ul *ngFor="let id of sequences">
+         <li>{{id}}</li>
+      </ul>
+    </div>
+
+
+  </form>

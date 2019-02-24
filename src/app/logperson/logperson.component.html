@@ -1,0 +1,28 @@
+<h3> Informações de Pessoas</h3>
+<div>
+  <button class="btn btn-default" (click)="onClickPersion()">Nova consulta</button>
+  <a [routerLink]="['/home']" class="btn btn-default">Voltar</a>
+</div>
+<br>
+<br>
+<div>
+  <h5> Últimas Consultas</h5>
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Data de Nascimento</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Signo</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let person of persons">
+        <td scope="row"> {{ person.name }} </td>
+        <td scope="row"> {{ person.birthday | date:'dd/MM/yyyy'}}  </td>
+        <td scope="row"> {{ (person.sex == 'F') ? 'Feminino' : 'Masculino'  }} </td>
+        <td scope="row"> {{ person.age }} </td>
+        <td scope="row"> {{ person.birthsign }} </td>
+    </tr>
+  </table>
+</div>
